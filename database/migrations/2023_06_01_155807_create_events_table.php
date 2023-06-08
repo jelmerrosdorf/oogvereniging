@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->timestamps();
             $table->string('title', 255);
             $table->string('datetime_start', 50);
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->string('price', 10);
             $table->string('price_member', 10);
             $table->text('description');
+            $table->boolean('public');
         });
     }
 

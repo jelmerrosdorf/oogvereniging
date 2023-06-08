@@ -1,8 +1,9 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -44,6 +45,14 @@ class EventController extends Controller
         ]);
 
         Event::create($request->all());
+
+        // Code for adding the currently logged in users' ID
+        // Field exists in events table, code not yet usable
+
+//        $eventData = $request->all();
+//        $eventData['user_id'] = Auth::id(); // Add currently logged in users' ID to event data
+//
+//        Event::create($eventData);
 
         return redirect()->route('events.index')
             ->with('success','Activiteit succesvol toegevoegd.');
