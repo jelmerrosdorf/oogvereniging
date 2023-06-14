@@ -14,6 +14,13 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'oogvereniging-creme': '#F7F4F2',
+                'oogvereniging-blue': '#00008B',
+                'oogvereniging-blue-alt': '#3498DB',
+                'oogvereniging-red': '#B11031',
+                'oogvereniging-purple': '#663399'
+            },
         },
     },
 
