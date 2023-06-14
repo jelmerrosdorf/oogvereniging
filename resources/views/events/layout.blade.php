@@ -2,9 +2,16 @@
 <html>
 <head>
     <title>Activiteiten</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-oogvereniging-blue leading-tight">
+            {{ __('Activiteiten') }}
+        </h2>
+    </x-slot>
+</x-app-layout>
 
 <div class="container">
     @yield('content')

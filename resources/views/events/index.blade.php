@@ -1,24 +1,24 @@
 @extends('events.layout')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
+    <div>
+        <div>
+            <div>
                 <h2>Alle activiteiten</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('events.create') }}">Nieuwe activiteit</a>
+            <div>
+                <a href="{{ route('events.create') }}">Nieuwe activiteit</a>
             </div>
         </div>
     </div>
 
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
+        <div>
             <p>{{ $message }}</p>
         </div>
     @endif
 
-    <table class="table table-bordered">
+    <table>
         <tr>
             <th>#</th>
             <th>Titel</th>
@@ -28,7 +28,7 @@
             <th>Kosten</th>
             <th>Kosten lid</th>
             <th>Omschrijving</th>
-            <th width="280px">Action</th>
+            <th>Action</th>
         </tr>
         @foreach ($events as $event)
             <tr>
@@ -43,14 +43,14 @@
                 <td>
                     <form action="{{ route('events.destroy',$event->id) }}" method="POST">
 
-                        <a class="btn btn-info" href="{{ route('events.show',$event->id) }}">Show</a>
+                        <a href="{{ route('events.show',$event->id) }}">Show</a>
 
-                        <a class="btn btn-primary" href="{{ route('events.edit',$event->id) }}">Wijzig</a>
+                        <a href="{{ route('events.edit',$event->id) }}">Wijzig</a>
 
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="btn btn-danger">Verwijder</button>
+                        <button type="submit">Verwijder</button>
                     </form>
                 </td>
             </tr>
