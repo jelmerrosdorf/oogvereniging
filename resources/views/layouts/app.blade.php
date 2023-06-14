@@ -14,8 +14,9 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
+
     <body class="font-sans antialiased">
-        <div class="bg-oogvereniging-creme">
+        <div class="min-h-screen bg-oogvereniging-creme">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -25,6 +26,13 @@
                         {{ $header }}
                     </div>
                 </header>
+            @endif
+
+            <!-- Page Content -->
+            @if (isset($content))
+                <main>
+                    {{ $content }}
+                </main>
             @endif
         </div>
     </body>
