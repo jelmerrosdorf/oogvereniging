@@ -15,6 +15,7 @@ class Event extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
         'title',
         'datetime_start',
         'datetime_end',
@@ -22,5 +23,6 @@ class Event extends Model
         'price',
         'price_member',
         'description',
+        'public'
     ];
 }

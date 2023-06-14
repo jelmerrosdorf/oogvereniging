@@ -42,17 +42,13 @@ class EventController extends Controller
             'price' => 'required',
             'price_member' => 'required',
             'description' => 'required',
+            'public' => 'required'
         ]);
 
-        Event::create($request->all());
+        $eventData = $request->all();
+        $eventData['user_id'] = Auth::user()->id; // Add currently logged in users' ID to event data
 
-        // Code for adding the currently logged in users' ID
-        // Field exists in events table, code not yet usable
-
-//        $eventData = $request->all();
-//        $eventData['user_id'] = Auth::id(); // Add currently logged in users' ID to event data
-//
-//        Event::create($eventData);
+        Event::create($eventData);
 
         return redirect()->route('events.index')
             ->with('success','Activiteit succesvol toegevoegd.');
