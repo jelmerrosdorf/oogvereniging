@@ -1,59 +1,96 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-oogvereniging-blue leading-tight">
-            Activiteiten
-        </h2>
+        <div class="max-w-6xl mx-auto mt-8 mb-6">
+            <h1 class="font-bold text-5xl text-oogvereniging-blue">
+                Activiteiten
+            </h1>
+        </div>
     </x-slot>
 
     <x-slot name="content">
-        <div>
-            <a href="{{ route('events.create') }}">Nieuwe activiteit</a>
-        </div>
+        <div class="max-w-6xl mx-auto">
+            @if ($message = Session::get('success'))
+                <div>
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
 
-        @if ($message = Session::get('success'))
+            <p class="text-lg text-oogvereniging-blue tracking-wide">
+                Van oogcafés tot webinars: in deze agenda vind je al onze activiteiten. Zoek op provincie of op onderwerp en meld je aan!
+            </p>
+
+            <form action="{{ route('events.create') }}" method="get">
+                <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
+                bg-oogvereniging-red px-5 py-3 my-8 rounded-lg border border-oogvereniging-black
+                shadow">Nieuwe activiteit</button>
+            </form>
+
+            <h2 class="font-semibold text-3xl text-oogvereniging-blue mb-6">
+                Filter de activiteiten
+            </h2>
+
             <div>
-                <p>{{ $message }}</p>
+                <form action="">
+                    <label for="province" class="text-lg text-oogvereniging-blue
+                    tracking-wide">Filter op provincie</label>
+                    <select id="province" class="block min-w-1/4 text-oogvereniging-blue
+                    tracking-wide rounded shadow">
+                        <option value="alles">Alles</option>
+                        <option value="zuid-holland">Zuid-Holland</option>
+                        <option value="noord-holland">Noord-Holland</option>
+                        <option value="noord-brabant">Noord-Brabant</option>
+                    </select>
+                </form>
             </div>
-        @endif
 
-        <table>
-            <tr>
-                <th>#</th>
-                <th>Titel</th>
-                <th>Starttijd</th>
-                <th>Eindtijd</th>
-                <th>Locatie</th>
-                <th>Kosten</th>
-                <th>Kosten lid</th>
-                <th>Omschrijving</th>
-                <th>Action</th>
-            </tr>
-            @foreach ($events as $event)
-                <tr>
-                    <td>{{ ++$i }}</td>
-                    <td>{{ $event->title }}</td>
-                    <td>{{ $event->datetime_start }}</td>
-                    <td>{{ $event->datetime_end }}</td>
-                    <td>{{ $event->location }}</td>
-                    <td>{{ $event->price }}</td>
-                    <td>{{ $event->price_member }}</td>
-                    <td>{{ $event->description }}</td>
-                    <td>
-                        <form action="{{ route('events.destroy',$event->id) }}" method="POST">
+            <div class="my-6">
+                <form action="">
+                    <label for="subject" class="text-lg text-oogvereniging-blue
+                tracking-wide">Filter op onderwerp</label>
+                    <select id="subject" class="block min-w-1/4 text-oogvereniging-blue
+                    tracking-wide rounded shadow">
+                        <option value="alles">Alles</option>
+                        <option value="digiwijs">Digiwijs</option>
+                        <option value="glaucoom">Glaucoom</option>
+                        <option value="oor&oog">Oor & oog</option>
+                    </select>
+                </form>
+            </div>
 
-                            <a href="{{ route('events.show',$event->id) }}">Show</a>
+            <h2 class="font-semibold text-3xl text-oogvereniging-blue mt-8">
+                Activiteiten
+            </h2>
 
-                            <a href="{{ route('events.edit',$event->id) }}">Wijzig</a>
+            <div class="flex justify-between py-6">
+                @foreach ($events as $event)
+                    <div onclick="location.href='{{ route('events.show',$event->id) }}';"
+                         class="border-2
+                    border-oogvereniging-blue rounded bg-oogvereniging-white text-oogvereniging-blue
+                    font-semibold p-5 shadow-xl w-4,5/10 flex flex-col justify-between gap-8
+                    focus:border-oogvereniging-red hover:border-oogvereniging-red">
+                        <h3 class="text-3xl mb-4 underline underline-offset-4">{{ $event->title }}</h3>
+                        <div class="flex justify-between items-baseline">
+                            <p class="text-lg mb-4 tracking-wide">{{
+                            $event->datetime_start }}</p>
+                            <div class="flex gap-4">
+                                @if($event->tag_province != '')
+                                    <p class="tracking-wide border rounded
+                                    border-oogvereniging-black bg-oogvereniging-purple
+                                    text-oogvereniging-white p-2">{{ $event->tag_province }}</p>
+                                @endif
+                                @if($event->tag_subject != '')
+                                    <p class="tracking-wide border rounded
+                                    border-oogvereniging-black bg-oogvereniging-purple
+                                    text-oogvereniging-white p-2">{{ $event->tag_subject }}</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
 
-                            @csrf
-                            @method('DELETE')
 
-                            <button type="submit">Verwijder</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
+        </div>
     </x-slot>
 </x-app-layout>
 
