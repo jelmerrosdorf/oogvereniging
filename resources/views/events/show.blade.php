@@ -57,11 +57,18 @@
                 shadow">Direct inschrijven</button>
             </form>
         </div>
-        <div class="max-w-6xl mx-auto mt-6 pb-6">
+        <div class="max-w-6xl mx-auto my-6">
             <p class="text-lg text-oogvereniging-blue">Aanmelden niet-leden</p>
             <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1">Meld je
                 aan via het aanmeldformulier. Mocht het invullen van het formulier niet lukken,
                 dan kun je je ook telefonisch aanmelden via de Ooglijn: 060 382 73 38.</p>
+        </div>
+        <div class="max-w-6xl mx-auto mt-12 pb-6">
+            <form action="{{ route('events.edit', $event->id) }}">
+                <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
+                bg-oogvereniging-red px-5 py-3 mt-1 rounded-lg border border-oogvereniging-black
+                shadow">Activiteit wijzigen</button>
+            </form>
         </div>
     </x-slot>
 </x-app-layout>
