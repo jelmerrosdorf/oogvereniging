@@ -11,7 +11,9 @@
         <div class="max-w-6xl mx-auto">
             @if ($message = Session::get('success'))
                 <div>
-                    <p>{{ $message }}</p>
+                    <p class="text-xl px-10 py-6 my-12 w-max border-2 border-oogvereniging-red
+                    rounded-lg bg-oogvereniging-white text-oogvereniging-blue font-semibold">
+                    {{ $message }}</p>
                 </div>
             @endif
 
