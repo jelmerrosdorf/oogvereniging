@@ -16,15 +16,16 @@
     </head>
 
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-oogvereniging-creme">
-            @include('layouts.navigation')
+        <div class="bg-oogvereniging-creme box-border">
+            <!-- Navigation -->
+            <nav>
+                @include('layouts.navigation')
+            </nav>
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-oogvereniging-creme">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <header>
                         {{ $header }}
-                    </div>
                 </header>
             @endif
 
@@ -34,6 +35,9 @@
                     {{ $content }}
                 </main>
             @endif
+
+            <!-- Footer -->
+
         </div>
     </body>
 </html>
