@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('price_member', 10);
             $table->text('description');
             $table->boolean('public');
+            $table->string('tag_province', 100);
+            $table->string('tag_subject', 100);
         });
     }
 

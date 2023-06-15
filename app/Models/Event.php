@@ -23,6 +23,8 @@ class Event extends Model
         'price',
         'price_member',
         'description',
-        'public'
+        'public',
+        'tag_province',
+        'tag_subject'
     ];
 }
