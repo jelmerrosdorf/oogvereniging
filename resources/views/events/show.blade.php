@@ -1,58 +1,67 @@
-@extends('events.layout')
-
-@section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Activiteit</h2>
+<x-app-layout>
+    <x-slot name="header">
+        <div class="max-w-6xl mx-auto mt-8">
+            <div class="flex gap-5">
+                <svg width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.65 3.3103L3 11.1265L10.65 18.9427" fill="white"/>
+                    <path d="M10.65 3.3103L3 11.1265L10.65 18.9427" stroke="#B11031" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M31.5001 11.1265H6.45013" stroke="#B11031" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="mb-7 -mt-1">
+                    <a href="{{ route('events.index') }}" class="text-lg tracking-wide
+                text-oogvereniging-blue underline underline-offset-4
+                hover:text-oogvereniging-red focus:text-oogvereniging-red">Terug naar alle
+                        activiteiten</a>
+                </div>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('events.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Titel</strong>
+            <h1 class="font-bold text-5xl text-oogvereniging-blue">
                 {{ $event->title }}
-            </div>
+            </h1>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Starttijd</strong>
-                {{ $event->datetime_start }}
-            </div>
+    </x-slot>
+
+    <x-slot name="content">
+        <div class="max-w-6xl mx-auto my-6">
+            <p class="text-lg text-oogvereniging-blue">Start</p>
+            <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1">{{
+            $event->datetime_start }}</p>
+            <p class="text-lg text-oogvereniging-blue mt-3">Eind</p>
+            <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1">{{
+            $event->datetime_end }}</p>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Eindtijd</strong>
-                {{ $event->datetime_end }}
-            </div>
+        <div class="max-w-6xl mx-auto my-6">
+            <p class="text-lg text-oogvereniging-blue">Locatie</p>
+            <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1">{{
+            $event->location }}</p>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Locatie</strong>
-                {{ $event->location }}
-            </div>
+        <div class="max-w-6xl mx-auto my-6">
+            <p class="text-lg text-oogvereniging-blue">Kosten leden</p>
+            <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1">{{
+            $event->price_member }}</p>
+            <p class="text-lg text-oogvereniging-blue mt-3">Kosten niet-leden</p>
+            <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1">{{
+            $event->price }}</p>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Kosten</strong>
-                {{ $event->price }}
-            </div>
-        </div> <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Kosten lid</strong>
-                {{ $event->price_member }}
-            </div>
+        <div class="max-w-6xl mx-auto my-6">
+            <p class="text-lg text-oogvereniging-blue">Informatie</p>
+            <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1">{{
+            $event->description }}</p>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Omschrijving</strong>
-                {{ $event->description }}
-            </div>
+        <div class="max-w-6xl mx-auto my-6">
+            <p class="text-lg text-oogvereniging-blue">Aanmelden leden</p>
+            <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1"></p>
+            <form action="" method="">
+                <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
+                bg-oogvereniging-red px-5 py-3 mt-1 rounded-lg border border-oogvereniging-black
+                shadow">Direct inschrijven</button>
+            </form>
         </div>
-    </div>
-@endsection
+        <div class="max-w-6xl mx-auto mt-6 pb-6">
+            <p class="text-lg text-oogvereniging-blue">Aanmelden niet-leden</p>
+            <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1">Meld je
+                aan via het aanmeldformulier. Mocht het invullen van het formulier niet lukken,
+                dan kun je je ook telefonisch aanmelden via de Ooglijn: 060 382 73 38.</p>
+        </div>
+    </x-slot>
+</x-app-layout>
