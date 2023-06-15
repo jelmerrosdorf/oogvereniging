@@ -1,84 +1,130 @@
-@extends('events.layout')
+<x-app-layout>
+    <x-slot name="header">
+        <div class="max-w-6xl mx-auto mt-8 mb-12">
+            <div class="flex gap-5">
+                <svg width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.65 3.3103L3 11.1265L10.65 18.9427" fill="white"/>
+                    <path d="M10.65 3.3103L3 11.1265L10.65 18.9427" stroke="#B11031" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M31.5001 11.1265H6.45013" stroke="#B11031" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="mb-7 -mt-1">
+                    <a href="{{ route('events.index') }}" class="text-lg tracking-wide
+                text-oogvereniging-blue underline underline-offset-4
+                hover:text-oogvereniging-red focus:text-oogvereniging-red">Terug naar alle
+                        activiteiten</a>
+                </div>
+            </div>
 
-@section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Nieuwe activiteit toevoegen</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('events.index') }}"> Back</a>
-            </div>
+            <h1 class="font-bold text-5xl text-oogvereniging-blue">
+                Nieuwe activiteit toevoegen
+            </h1>
         </div>
-    </div>
+    </x-slot>
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+    <x-slot name="content">
+        <div class="max-w-6xl mx-auto">
+            @if ($errors->any())
+                <div>
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ route('events.store') }}" method="POST">
+                @csrf
+                <div class="flex flex-col gap-8">
+                    <div class="flex gap-4 items-center">
+                        <label for="title" class="text-xl font-semibold text-oogvereniging-blue
+                        tracking-wide min-w-150">Titel</label>
+                        <textarea id="title" rows="2" class="w-2/5 border-2 rounded-lg
+                        border-oogvereniging-blue resize-none"></textarea>
+                    </div>
+                    <div class="flex gap-4 items-baseline">
+                        <label for="datetime_start" class="text-xl font-semibold text-oogvereniging-blue
+                        tracking-wide min-w-150">Start</label>
+                        <input id="datetime_start" type="text" class="w-2/5 border-2 rounded-lg
+                        border-oogvereniging-blue">
+                    </div>
+                    <div class="flex gap-4 items-baseline">
+                        <label for="datetime_end" class="text-xl font-semibold text-oogvereniging-blue
+                        tracking-wide min-w-150">Eind</label>
+                        <input id="datetime_end" type="text" class="w-2/5 border-2 rounded-lg
+                        border-oogvereniging-blue">
+                    </div>
+                    <div class="flex gap-4 items-center">
+                        <label for="location" class="text-xl font-semibold text-oogvereniging-blue
+                        tracking-wide min-w-150">Locatie</label>
+                        <textarea id="location" rows="2" class="w-2/5 border-2 rounded-lg
+                        border-oogvereniging-blue resize-none"></textarea>
+                    </div>
+                    <div class="flex gap-4 items-baseline">
+                        <label for="price" class="text-xl font-semibold text-oogvereniging-blue
+                        tracking-wide min-w-150">Prijs niet-leden</label>
+                        <input id="price" type="text" value="€" class="w-2/5 border-2 rounded-lg
+                        border-oogvereniging-blue">
+                    </div>
+                    <div class="flex gap-4 items-baseline">
+                        <label for="price_member" class="text-xl font-semibold text-oogvereniging-blue
+                        tracking-wide min-w-150">Prijs leden</label>
+                        <input id="price_member" type="text" value="€" class="w-2/5 border-2 rounded-lg
+                        border-oogvereniging-blue">
+                    </div>
+                    <div class="flex gap-4 items-center">
+                        <label for="description" class="text-xl font-semibold text-oogvereniging-blue
+                        tracking-wide min-w-150">Omschrijving</label>
+                        <textarea id="description" rows="6" class="w-2/5 border-2 rounded-lg
+                        border-oogvereniging-blue resize-none"></textarea>
+                    </div>
+                    <div class="flex gap-4 items-baseline">
+                        <label for="public" class="text-xl font-semibold text-oogvereniging-blue
+                        tracking-wide min-w-150">Status</label>
+                        <select id="public" class="w-2/5 border-2 rounded-lg
+                        border-oogvereniging-blue tracking-wide">
+                            <option value="1">Publiceren</option>
+                            <option value="0">Concept</option>
+                        </select>
+                    </div>
+                    <div class="flex gap-4 items-baseline">
+                        <label for="tag_province" class="text-xl font-semibold text-oogvereniging-blue
+                        tracking-wide min-w-150">Provincie</label>
+                        <select id="tag_province" class="w-2/5 border-2 rounded-lg
+                        border-oogvereniging-blue tracking-wide">
+                            <option value="zuid-holland">Zuid-Holland</option>
+                            <option value="noord-holland">Noord-Holland</option>
+                            <option value="noord-brabant">Noord-Brabant</option>
+                        </select>
+                    </div>
+                    <div class="flex gap-4 items-baseline">
+                        <label for="tag_subject" class="text-xl font-semibold text-oogvereniging-blue
+                        tracking-wide min-w-150">Onderwerp</label>
+                        <select id="tag_subject" class="w-2/5 border-2 rounded-lg
+                        border-oogvereniging-blue tracking-wide">
+                            <option value="digiwijs">Digiwijs</option>
+                            <option value="glaucoom">Glaucoom</option>
+                            <option value="oor&oog">Oor & oog</option>
+                        </select>
+                    </div>
+                    <div>
+                        <form>
+                            <button type="submit" class="text-xl font-semibold tracking-wide
+                            text-oogvereniging-white bg-oogvereniging-red px-5 py-3 my-8
+                            rounded-lg border border-oogvereniging-black
+                            shadow">Activiteit opslaan</button>
+                        </form>
+                    </div>
+
+                </div>
+            </form>
         </div>
-    @endif
+    </x-slot>
+</x-app-layout>
 
-    <form action="{{ route('events.store') }}" method="POST">
-        @csrf
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Titel</strong>
-                    <input type="text" name="title" class="form-control" placeholder="/">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Starttijd</strong>
-                    <input class="form-control" name="datetime_start" placeholder="/">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Eindtijd</strong>
-                    <input type="text" name="datetime_end" class="form-control" placeholder="/">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Locatie</strong>
-                    <input type="text" name="location" class="form-control" placeholder="/">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Kosten</strong>
-                    <input class="form-control" name="price" placeholder="/">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Kosten lid</strong>
-                    <input type="text" name="price_member" class="form-control" placeholder="/">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Omschrijving</strong>
-                    <input type="text" name="description" class="form-control" placeholder="/">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Publiceren</strong>
-                    <input type="text" name="public" class="form-control" placeholder="/">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
 
-    </form>
-@endsection
+
+
+
