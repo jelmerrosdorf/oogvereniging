@@ -15,10 +15,10 @@ class EventController extends Controller
      */
     public function index(): View
     {
-        $events = Event::latest()->paginate(5);
+        $events = Event::latest()->paginate(20);
 
         return view('events.index',compact('events'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
     /**
@@ -34,17 +34,6 @@ class EventController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'title' => 'required',
-            'datetime_start' => 'required',
-            'datetime_end' => 'required',
-            'location' => 'required',
-            'price' => 'required',
-            'price_member' => 'required',
-            'description' => 'required',
-            'public' => 'required'
-        ]);
-
         $eventData = $request->all();
         $eventData['user_id'] = Auth::user()->id; // Add currently logged in users' ID to event data
 
@@ -75,20 +64,10 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event): RedirectResponse
     {
-        $request->validate([
-            'title' => 'required',
-            'datetime_start' => 'required',
-            'datetime_end' => 'required',
-            'location' => 'required',
-            'price' => 'required',
-            'price_member' => 'required',
-            'description' => 'required',
-        ]);
-
         $event->update($request->all());
 
         return redirect()->route('events.index')
-            ->with('success','Activiteit gewijzigd');
+            ->with('success','Activiteit succesvol gewijzigd.');
     }
 
     /**
@@ -99,6 +78,6 @@ class EventController extends Controller
         $event->delete();
 
         return redirect()->route('events.index')
-            ->with('success','Activiteit verwijderd');
+            ->with('success','Activiteit succesvol verwijderd.');
     }
 }
