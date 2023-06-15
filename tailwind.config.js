@@ -15,12 +15,20 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
+                'oogvereniging-white': '#FFFFFF',
+                'oogvereniging-black': '#000000',
                 'oogvereniging-creme': '#F7F4F2',
                 'oogvereniging-blue': '#00008B',
                 'oogvereniging-blue-alt': '#3498DB',
                 'oogvereniging-red': '#B11031',
                 'oogvereniging-purple': '#663399'
             },
+            width: {
+               '4,5/10': '45%'
+            },
+            minWidth: {
+                '1/4': '25%'
+            }
         },
     },
 
