@@ -9,8 +9,8 @@
                 </svg>
                 <div class="mb-7 -mt-1">
                     <a href="{{ route('events.index') }}" class="text-lg tracking-wide
-                text-oogvereniging-blue underline underline-offset-4
-                hover:text-oogvereniging-red focus:text-oogvereniging-red">Terug naar alle
+                    text-oogvereniging-blue underline underline-offset-4
+                    hover:text-oogvereniging-red focus:text-oogvereniging-red">Terug naar alle
                         activiteiten</a>
                 </div>
             </div>
@@ -40,50 +40,50 @@
                     <div class="flex gap-4 items-center">
                         <label for="title" class="text-xl font-semibold text-oogvereniging-blue
                         tracking-wide min-w-150">Titel</label>
-                        <textarea id="title" rows="2" class="w-2/5 border-2 rounded-lg
+                        <textarea id="title" name="title" rows="2" class="w-2/5 border-2 rounded-lg
                         border-oogvereniging-blue resize-none"></textarea>
                     </div>
                     <div class="flex gap-4 items-baseline">
                         <label for="datetime_start" class="text-xl font-semibold text-oogvereniging-blue
                         tracking-wide min-w-150">Start</label>
-                        <input id="datetime_start" type="text" class="w-2/5 border-2 rounded-lg
-                        border-oogvereniging-blue">
+                        <input id="datetime_start" name="datetime_start" type="text" class="w-2/5
+                        border-2 rounded-lg border-oogvereniging-blue">
                     </div>
                     <div class="flex gap-4 items-baseline">
                         <label for="datetime_end" class="text-xl font-semibold text-oogvereniging-blue
                         tracking-wide min-w-150">Eind</label>
-                        <input id="datetime_end" type="text" class="w-2/5 border-2 rounded-lg
-                        border-oogvereniging-blue">
+                        <input id="datetime_end" name="datetime_end" type="text" class="w-2/5
+                        border-2 rounded-lg border-oogvereniging-blue">
                     </div>
                     <div class="flex gap-4 items-center">
                         <label for="location" class="text-xl font-semibold text-oogvereniging-blue
                         tracking-wide min-w-150">Locatie</label>
-                        <textarea id="location" rows="2" class="w-2/5 border-2 rounded-lg
-                        border-oogvereniging-blue resize-none"></textarea>
+                        <textarea id="location" name="location" rows="2" class="w-2/5 border-2
+                        rounded-lg border-oogvereniging-blue resize-none"></textarea>
                     </div>
                     <div class="flex gap-4 items-baseline">
                         <label for="price" class="text-xl font-semibold text-oogvereniging-blue
                         tracking-wide min-w-150">Prijs niet-leden</label>
-                        <input id="price" type="text" value="€" class="w-2/5 border-2 rounded-lg
-                        border-oogvereniging-blue">
+                        <input id="price" name="price" type="text" value="€" class="w-2/5 border-2
+                        rounded-lg border-oogvereniging-blue">
                     </div>
                     <div class="flex gap-4 items-baseline">
                         <label for="price_member" class="text-xl font-semibold text-oogvereniging-blue
                         tracking-wide min-w-150">Prijs leden</label>
-                        <input id="price_member" type="text" value="€" class="w-2/5 border-2 rounded-lg
+                        <input id="price_member" name="price_member" type="text" value="€" class="w-2/5 border-2 rounded-lg
                         border-oogvereniging-blue">
                     </div>
                     <div class="flex gap-4 items-center">
                         <label for="description" class="text-xl font-semibold text-oogvereniging-blue
                         tracking-wide min-w-150">Omschrijving</label>
                         <textarea id="description" rows="6" class="w-2/5 border-2 rounded-lg
-                        border-oogvereniging-blue resize-none"></textarea>
+                        border-oogvereniging-blue resize-none" name="description"></textarea>
                     </div>
                     <div class="flex gap-4 items-baseline">
                         <label for="public" class="text-xl font-semibold text-oogvereniging-blue
                         tracking-wide min-w-150">Status</label>
                         <select id="public" class="w-2/5 border-2 rounded-lg
-                        border-oogvereniging-blue tracking-wide">
+                        border-oogvereniging-blue tracking-wide" name="public">
                             <option value="1">Publiceren</option>
                             <option value="0">Concept</option>
                         </select>
@@ -92,31 +92,30 @@
                         <label for="tag_province" class="text-xl font-semibold text-oogvereniging-blue
                         tracking-wide min-w-150">Provincie</label>
                         <select id="tag_province" class="w-2/5 border-2 rounded-lg
-                        border-oogvereniging-blue tracking-wide">
-                            <option value="zuid-holland">Zuid-Holland</option>
-                            <option value="noord-holland">Noord-Holland</option>
-                            <option value="noord-brabant">Noord-Brabant</option>
+                        border-oogvereniging-blue tracking-wide" name="tag_province">
+                            <option value="Landelijk">Landelijk</option>
+                            <option value="Zuid-Holland">Zuid-Holland</option>
+                            <option value="Noord-Holland">Noord-Holland</option>
+                            <option value="Noord-Brabant">Noord-Brabant</option>
                         </select>
                     </div>
                     <div class="flex gap-4 items-baseline">
                         <label for="tag_subject" class="text-xl font-semibold text-oogvereniging-blue
                         tracking-wide min-w-150">Onderwerp</label>
                         <select id="tag_subject" class="w-2/5 border-2 rounded-lg
-                        border-oogvereniging-blue tracking-wide">
-                            <option value="digiwijs">Digiwijs</option>
-                            <option value="glaucoom">Glaucoom</option>
-                            <option value="oor&oog">Oor & oog</option>
+                        border-oogvereniging-blue tracking-wide" name="tag_subject">
+                            <option value="Digiwijs">Digiwijs</option>
+                            <option value="Glaucoom">Glaucoom</option>
+                            <option value="Oor & oog">Oor & oog</option>
+                            <option value="Sportief">Sportief</option>
                         </select>
                     </div>
                     <div>
-                        <form>
-                            <button type="submit" class="text-xl font-semibold tracking-wide
-                            text-oogvereniging-white bg-oogvereniging-red px-5 py-3 my-8
-                            rounded-lg border border-oogvereniging-black
-                            shadow">Activiteit opslaan</button>
-                        </form>
+                        <button type="submit" class="text-xl font-semibold tracking-wide
+                        text-oogvereniging-white bg-oogvereniging-red px-5 py-3 my-8
+                        rounded-lg border border-oogvereniging-black
+                        shadow">Activiteit opslaan</button>
                     </div>
-
                 </div>
             </form>
         </div>
