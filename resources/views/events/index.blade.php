@@ -38,11 +38,11 @@
                     <select id="province" class="block min-w-1/4 text-oogvereniging-blue
                     tracking-wide rounded shadow hover:border hover:border-oogvereniging-blue
                     focus:border focus:border-oogvereniging-blue">
-                        <option value="alles">Alles</option>
+                        <option value="Alles">Alles</option>
                         <option value="Landelijk">Landelijk</option>
-                        <option value="zuid-holland">Zuid-Holland</option>
-                        <option value="noord-holland">Noord-Holland</option>
-                        <option value="noord-brabant">Noord-Brabant</option>
+                        <option value="Zuid-Holland">Zuid-Holland</option>
+                        <option value="Noord-Holland">Noord-Holland</option>
+                        <option value="Noord-Brabant">Noord-Brabant</option>
                     </select>
                 </form>
             </div>
@@ -54,10 +54,10 @@
                     <select id="subject" class="block min-w-1/4 text-oogvereniging-blue
                     tracking-wide rounded shadow hover:border hover:border-oogvereniging-blue
                     focus:border focus:border-oogvereniging-blue">
-                        <option value="alles">Alles</option>
-                        <option value="digiwijs">Digiwijs</option>
-                        <option value="glaucoom">Glaucoom</option>
-                        <option value="oor&oog">Oor & oog</option>
+                        <option value="Alles">Alles</option>
+                        <option value="Digiwijs">Digiwijs</option>
+                        <option value="Glaucoom">Glaucoom</option>
+                        <option value="Oor & oog">Oor & oog</option>
                         <option value="sportief">Sportief</option>
                     </select>
                 </form>
