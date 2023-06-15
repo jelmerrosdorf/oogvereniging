@@ -34,7 +34,8 @@
                     <label for="province" class="text-lg text-oogvereniging-blue
                     tracking-wide">Filter op provincie</label>
                     <select id="province" class="block min-w-1/4 text-oogvereniging-blue
-                    tracking-wide rounded shadow">
+                    tracking-wide rounded shadow hover:border hover:border-oogvereniging-blue
+                    focus:border focus:border-oogvereniging-blue">
                         <option value="alles">Alles</option>
                         <option value="zuid-holland">Zuid-Holland</option>
                         <option value="noord-holland">Noord-Holland</option>
@@ -46,9 +47,10 @@
             <div class="my-6">
                 <form action="">
                     <label for="subject" class="text-lg text-oogvereniging-blue
-                tracking-wide">Filter op onderwerp</label>
+                    tracking-wide">Filter op onderwerp</label>
                     <select id="subject" class="block min-w-1/4 text-oogvereniging-blue
-                    tracking-wide rounded shadow">
+                    tracking-wide rounded shadow hover:border hover:border-oogvereniging-blue
+                    focus:border focus:border-oogvereniging-blue">
                         <option value="alles">Alles</option>
                         <option value="digiwijs">Digiwijs</option>
                         <option value="glaucoom">Glaucoom</option>

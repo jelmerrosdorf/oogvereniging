@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="max-w-6xl mx-auto mt-8">
+        <div class="max-w-6xl mx-auto mt-8 mb-6">
             <div class="flex gap-5">
                 <svg width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.65 3.3103L3 11.1265L10.65 18.9427" fill="white"/>
@@ -22,7 +22,7 @@
     </x-slot>
 
     <x-slot name="content">
-        <div class="max-w-6xl mx-auto my-6">
+        <div class="max-w-6xl mx-auto">
             <p class="text-lg text-oogvereniging-blue">Start</p>
             <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1">{{
             $event->datetime_start }}</p>
