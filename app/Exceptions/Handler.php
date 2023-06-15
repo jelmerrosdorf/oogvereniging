@@ -27,4 +27,14 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    /**
+     * Redirect to login page when session expires.
+     */
+    public function report(Throwable $e)
+    {
+        if ($e instanceof \Illuminate\Session\TokenMismatchException) {
+            return redirect()->route('login');
+        }
+    }
 }
