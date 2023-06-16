@@ -9,6 +9,11 @@ class Event extends Model
 {
     use HasFactory;
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'event_user');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

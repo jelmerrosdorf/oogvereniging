@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -79,5 +80,17 @@ class EventController extends Controller
 
         return redirect()->route('events.index')
             ->with('success','Activiteit succesvol verwijderd.');
+    }
+
+    public function signup(Event $event)
+    {
+        $event_id = request()->segment(2);
+        $user_id = Auth::user()->id;
+
+        $event = Event::find($event_id);
+        $event->users()->attach($user_id);
+
+        return redirect()->route('events.index')
+            ->with('success','Je staat ingeschreven!');
     }
 }

@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('events', EventController::class);
+Route::resource('/events', EventController::class);
+
+Route::post('/events/{id}/signup', [EventController::class, 'signup'])->name('events.signup');
 
 require __DIR__.'/auth.php';
