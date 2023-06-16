@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\EventsExport;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EventController extends Controller
 {
@@ -92,5 +94,10 @@ class EventController extends Controller
 
         return redirect()->route('events.index')
             ->with('success','Je staat ingeschreven!');
+    }
+
+    public function export()
+    {
+        return Excel::download(new EventsExport, 'events.xlsx');
     }
 }

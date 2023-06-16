@@ -99,7 +99,11 @@
                 @endforeach
             </div>
 
-
+            <form action="{{ route('events.export') }}" method="get">
+                <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
+                bg-oogvereniging-red px-5 py-3 my-8 rounded-lg border border-oogvereniging-black
+                shadow">Exporteer activiteiten</button>
+            </form>
         </div>
     </x-slot>
 </x-app-layout>

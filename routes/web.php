@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/events/export', [EventController::class, 'export'])->name('events.export');
+
 Route::get('/', function () {
     return view('welcome');
 });
