@@ -16,7 +16,7 @@
     </head>
 
     <body class="font-sans antialiased">
-        <div class="bg-oogvereniging-creme box-border">
+        <div class="min-h-screen bg-oogvereniging-creme box-border">
             <!-- Navigation -->
             <nav>
                 @include('layouts.navigation')

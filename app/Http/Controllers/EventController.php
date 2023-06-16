@@ -25,6 +25,17 @@ class EventController extends Controller
     }
 
     /**
+     * Display an alternative listing of the resource.
+     */
+    public function indexalt(): View
+    {
+        $events = Event::orderBy('datetime_start')->paginate(20);
+
+        return view('events.concepts', compact('events'))
+            ->with('i', (request()->input('page', 1) - 1) * 20);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create(): View
