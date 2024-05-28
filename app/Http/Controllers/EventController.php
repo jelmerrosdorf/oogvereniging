@@ -144,4 +144,13 @@ class EventController extends Controller
     {
         return Excel::download(new EventsExport, 'events.xlsx');
     }
+
+    public function registrations(Event $event)
+    {
+        $user = Auth::user();
+
+        $events = $user->events;
+
+        return view('events.registrations',compact('events'));
+    }
 }
