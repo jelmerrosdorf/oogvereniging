@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/events/export', [EventController::class, 'export'])->name('events.export');
-
-Route::get('/events/concepts', [EventController::class, 'indexalt'])->name('events.concepts');
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -33,8 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('/events', EventController::class);
+Route::prefix('/events')->group(function () {
+    Route::get('/concepts', [EventController::class, 'conceptindex'])->name('events.concepts');
+    Route::get('/export', [EventController::class, 'export'])->name('events.export');
+    Route::get('/registrations', [EventController::class, 'registrations'])->name('events.registrations');
+    Route::post('/{id}/signup', [EventController::class, 'signup'])->name('events.signup');
+    Route::post('/{id}/signout', [EventController::class, 'signout'])->name('events.signout');
+});
 
-Route::post('/events/{id}/signup', [EventController::class, 'signup'])->name('events.signup');
+Route::resource('/events', EventController::class);
 
 require __DIR__.'/auth.php';

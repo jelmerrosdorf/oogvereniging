@@ -27,7 +27,7 @@ class EventController extends Controller
     /**
      * Display an alternative listing of the resource.
      */
-    public function indexalt(): View
+    public function conceptindex(): View
     {
         $events = Event::orderBy('datetime_start')->paginate(20);
 
@@ -62,7 +62,14 @@ class EventController extends Controller
      */
     public function show(Event $event): View
     {
-        return view('events.show',compact('event'));
+        $event_id = request()->segment(2);
+        $user = Auth::user();
+
+        $event = Event::find($event_id);
+
+        $isSignedUp = $user->events()->where('event_id', $event->id)->exists();
+
+        return view('events.show',compact('event', 'isSignedUp'));
     }
 
     /**
@@ -98,13 +105,39 @@ class EventController extends Controller
     public function signup(Event $event)
     {
         $event_id = request()->segment(2);
-        $user_id = Auth::user()->id;
+        $user = Auth::user();
 
         $event = Event::find($event_id);
-        $event->users()->attach($user_id);
+
+        $isSignedUp = $user->events()->where('event_id', $event->id)->exists();
+
+        if ($isSignedUp) {
+            return redirect()->route('events.index')->with('success', 'Je staat al ingeschreven voor deze activiteit.');
+        }
+
+        $user->events()->attach($event->id);
 
         return redirect()->route('events.index')
-            ->with('success','Je staat ingeschreven!');
+            ->with('success','Je staat nu ingeschreven voor deze activiteit.');
+    }
+
+    public function signout(Event $event)
+    {
+        $event_id = request()->segment(2);
+        $user = Auth::user();
+
+        $event = Event::find($event_id);
+
+        $isSignedUp = $user->events()->where('event_id', $event->id)->exists();
+
+        if ($isSignedUp === false) {
+            return redirect()->route('events.registrations')->with('success', 'Je kunt je niet uitschrijven voor deze activiteit.');
+        }
+
+        $user->events()->detach($event_id);
+
+        return redirect()->route('events.registrations')
+            ->with('success','Je bent nu uitgeschreven voor deze activiteit.');
     }
 
     public function export()
