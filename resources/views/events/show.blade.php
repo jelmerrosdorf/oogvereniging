@@ -52,14 +52,14 @@
             <p class="text-lg text-oogvereniging-blue">Aanmelden leden</p>
             <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1"></p>
             @if ($isSignedUp)
-                <form action="{{ route('events.signout', $event->id) }}" method="POST">
+                <form action="{{ route('event.signout', $event->id) }}" method="POST">
                     @csrf
                     <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
                 bg-oogvereniging-red px-5 py-3 mt-1 rounded-lg border border-oogvereniging-black
                 shadow">Afmelden</button>
                 </form>
             @else
-                <form action="{{ route('events.signup', $event->id) }}" method="POST">
+                <form action="{{ route('event.signup', $event->id) }}" method="POST">
                     @csrf
                     <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
                 bg-oogvereniging-red px-5 py-3 mt-1 rounded-lg border border-oogvereniging-black
@@ -78,6 +78,13 @@
                 <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
                 bg-oogvereniging-red px-5 py-3 mt-1 rounded-lg border border-oogvereniging-black
                 shadow">Activiteit wijzigen</button>
+            </form>
+        </div>
+        <div class="max-w-6xl mx-auto mt-12 pb-6">
+            <form action="{{ route('event.signups', $event->id) }}">
+                <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
+                bg-oogvereniging-red px-5 py-3 mt-1 rounded-lg border border-oogvereniging-black
+                shadow">Inschrijvingen bekijken</button>
             </form>
         </div>
     </x-slot>

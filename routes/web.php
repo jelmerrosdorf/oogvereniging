@@ -31,10 +31,12 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('/events')->group(function () {
     Route::get('/concepts', [EventController::class, 'conceptindex'])->name('events.concepts');
-    Route::get('/export', [EventController::class, 'export'])->name('events.export');
+    Route::get('/export', [EventController::class, 'exportevents'])->name('events.export');
     Route::get('/registrations', [EventController::class, 'registrations'])->name('events.registrations');
-    Route::post('/{id}/signup', [EventController::class, 'signup'])->name('events.signup');
-    Route::post('/{id}/signout', [EventController::class, 'signout'])->name('events.signout');
+    Route::get('/{id}/export', [EventController::class, 'exportsignups'])->name('event.export');
+    Route::post('/{id}/signup', [EventController::class, 'signup'])->name('event.signup');
+    Route::get('/{id}/signups', [EventController::class, 'signups'])->name('event.signups');
+    Route::post('/{id}/signout', [EventController::class, 'signout'])->name('event.signout');
 });
 
 Route::resource('/events', EventController::class);

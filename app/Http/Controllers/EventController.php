@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\EventsExport;
+use App\Exports\EventUsersExport;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -140,9 +141,16 @@ class EventController extends Controller
             ->with('success','Je bent nu uitgeschreven voor deze activiteit.');
     }
 
-    public function export()
+    public function exportevents()
     {
         return Excel::download(new EventsExport, 'events.xlsx');
+    }
+
+    public function exportsignups()
+    {
+        $event_id = request()->segment(2);
+
+        return Excel::download(new EventUsersExport($event_id), 'event_users.xlsx');
     }
 
     public function registrations(Event $event)
@@ -152,5 +160,16 @@ class EventController extends Controller
         $events = $user->events;
 
         return view('events.registrations',compact('events'));
+    }
+
+    public function signups()
+    {
+        $event_id = request()->segment(2);
+
+        $event = Event::find($event_id);
+
+        $users = Event::find($event_id)->users()->select('user_id', 'name', 'email')->get();
+
+        return view('events.signups',compact('users', 'event'));
     }
 }
