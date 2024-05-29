@@ -168,7 +168,7 @@ class EventController extends Controller
 
         $event = Event::find($event_id);
 
-        $users = Event::find($event_id)->users()->select('user_id', 'name', 'email')->get();
+        $users = Event::find($event_id)->users()->select('name', 'email')->get();
 
         return view('events.signups',compact('users', 'event'));
     }
