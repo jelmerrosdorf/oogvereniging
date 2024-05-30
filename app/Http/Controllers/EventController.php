@@ -17,11 +17,26 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $events = Event::orderBy('datetime_start')->paginate(20);
+        $query = Event::query();
 
-        return view('events.index',compact('events'))
+        if ($request->has('province') && $request->province && $request->province != 'Alles') {
+            $query->where('tag_province', $request->province);
+        }
+
+        if ($request->has('subject') && $request->subject && $request->subject != 'Alles') {
+            $query->where('tag_subject', $request->subject);
+        }
+
+        $query->orderBy('datetime_start')->paginate(20);
+
+        $events = $query->get();
+
+        $provinces = Event::select('tag_province')->distinct()->pluck('tag_province');
+        $subjects = Event::select('tag_subject')->distinct()->pluck('tag_subject');
+
+        return view('events.index',compact('events', 'provinces', 'subjects'))
             ->with('i', (request()->input('page', 1) - 1) * 20);
     }
 

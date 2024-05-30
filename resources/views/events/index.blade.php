@@ -32,36 +32,40 @@
             </h2>
 
             <div>
-                <form action="">
-                    <label for="province" class="text-lg text-oogvereniging-blue
+                <form action="{{ route('events.index') }}" method="get">
+                    @csrf
+                    <div>
+                        <label for="province" class="text-lg text-oogvereniging-blue
                     tracking-wide">Filter op provincie</label>
-                    <select id="province" class="block min-w-1/4 text-oogvereniging-blue
+                        <select name="province" id="province" class="block min-w-1/4 text-oogvereniging-blue
                     tracking-wide rounded shadow hover:border hover:border-oogvereniging-blue
                     focus:border focus:border-oogvereniging-blue">
-                        <option value="Alles">Alles</option>
-                        <option value="Landelijk">Landelijk</option>
-                        <option value="Zuid-Holland">Zuid-Holland</option>
-                        <option value="Noord-Holland">Noord-Holland</option>
-                        <option value="Noord-Brabant">Noord-Brabant</option>
-                    </select>
+                            <option value="Alles">Alles</option>
+                            @foreach($provinces as $province)
+                                <option value="{{ $province }}">{{ $province }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="subject" class="text-lg text-oogvereniging-blue
+                    tracking-wide">Filter op onderwerp</label>
+                        <select name="subject" id="subject" class="block min-w-1/4 text-oogvereniging-blue
+                    tracking-wide rounded shadow hover:border hover:border-oogvereniging-blue
+                    focus:border focus:border-oogvereniging-blue">
+                            <option value="Alles">Alles</option>
+                            @foreach($subjects as $subject)
+                                <option value="{{ $subject }}">{{ $subject }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <button type="submit" class="text-xl font-semibold tracking-wide text-oogvereniging-white
+                bg-oogvereniging-red px-5 py-3 mb-8 rounded-lg border border-oogvereniging-black
+                shadow">Toepassen</button>
                 </form>
             </div>
 
-            <div class="my-6">
-                <form action="">
-                    <label for="subject" class="text-lg text-oogvereniging-blue
-                    tracking-wide">Filter op onderwerp</label>
-                    <select id="subject" class="block min-w-1/4 text-oogvereniging-blue
-                    tracking-wide rounded shadow hover:border hover:border-oogvereniging-blue
-                    focus:border focus:border-oogvereniging-blue">
-                        <option value="Alles">Alles</option>
-                        <option value="Digiwijs">Digiwijs</option>
-                        <option value="Glaucoom">Glaucoom</option>
-                        <option value="Oor & oog">Oor & oog</option>
-                        <option value="sportief">Sportief</option>
-                    </select>
-                </form>
-            </div>
 
             <h2 class="font-semibold text-3xl text-oogvereniging-blue mt-8">
                 Activiteiten

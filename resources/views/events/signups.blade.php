@@ -13,15 +13,13 @@
             <table>
                 <thead>
                 <tr>
-                    <th>User ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
+                    <th>Naam</th>
+                    <th>Emailadres</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($users as $user)
                     <tr>
-                        <td>{{ $user->user_id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                     </tr>
