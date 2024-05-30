@@ -33,6 +33,10 @@ class EventController extends Controller
 
         $events = $query->get();
 
+        if ($request->ajax()) {
+            return view('events.partial', compact('events'));
+        }
+
         $provinces = Event::select('tag_province')->distinct()->pluck('tag_province');
         $subjects = Event::select('tag_subject')->distinct()->pluck('tag_subject');
 

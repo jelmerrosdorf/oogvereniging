@@ -32,7 +32,7 @@
             </h2>
 
             <div>
-                <form action="{{ route('events.index') }}" method="get">
+                <form id="filter-form">
                     @csrf
                     <div>
                         <label for="province" class="text-lg text-oogvereniging-blue
@@ -59,10 +59,6 @@
                             @endforeach
                         </select>
                     </div>
-
-                    <button type="submit" class="text-xl font-semibold tracking-wide text-oogvereniging-white
-                bg-oogvereniging-red px-5 py-3 mb-8 rounded-lg border border-oogvereniging-black
-                shadow">Toepassen</button>
                 </form>
             </div>
 
@@ -71,7 +67,7 @@
                 Activiteiten
             </h2>
 
-            <div class="flex flex-wrap justify-between py-6">
+            <div id="events-container" class="flex flex-wrap justify-between py-6">
                 @foreach ($events as $event)
                     @if($event->public == 1)
                         <div onclick="location.href='{{ route('events.show',$event->id) }}';"
@@ -109,6 +105,43 @@
                 shadow">Exporteer activiteiten</button>
             </form>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                let provinceSelect = document.getElementById('province');
+                let subjectSelect = document.getElementById('subject');
+
+                if (provinceSelect && subjectSelect) {
+
+                    provinceSelect.addEventListener('change', updateEvents);
+                    subjectSelect.addEventListener('change', updateEvents);
+
+                    function updateEvents() {
+                        let province = provinceSelect.value;
+                        let subject = subjectSelect.value;
+
+                        fetch(`{{ url('/events') }}?province=${province}&subject=${subject}`, {
+                            method: 'GET',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'Accept': 'text/html'
+                            }
+                        })
+                            .then(response => response.text())
+                            .then(data => {
+                                document.getElementById('events-container').innerHTML = data;
+                            })
+                            .catch(error => console.error('Error fetching events:', error));
+                    }
+                } else {
+                    console.error('Select elements not found');
+                }
+            });
+        </script>
+
     </x-slot>
+
 </x-app-layout>
 
