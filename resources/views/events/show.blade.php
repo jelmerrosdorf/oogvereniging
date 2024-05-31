@@ -51,20 +51,22 @@
         <div class="max-w-6xl mx-auto my-6">
             <p class="text-lg text-oogvereniging-blue">Aanmelden leden</p>
             <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1"></p>
-            @if ($isSignedUp)
-                <form action="{{ route('event.signout', $event->id) }}" method="POST">
-                    @csrf
-                    <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
-                bg-oogvereniging-red px-5 py-3 mt-1 rounded-lg border border-oogvereniging-black
-                shadow">Afmelden</button>
-                </form>
-            @else
-                <form action="{{ route('event.signup', $event->id) }}" method="POST">
-                    @csrf
-                    <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
-                bg-oogvereniging-red px-5 py-3 mt-1 rounded-lg border border-oogvereniging-black
-                shadow">Direct aanmelden</button>
-                </form>
+            @if ($event->public == 1)
+                @if ($isSignedUp)
+                    <form action="{{ route('event.signout', $event->id) }}" method="POST">
+                        @csrf
+                        <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
+                    bg-oogvereniging-red px-5 py-3 mt-1 rounded-lg border border-oogvereniging-black
+                    shadow">Afmelden</button>
+                    </form>
+                @else
+                    <form action="{{ route('event.signup', $event->id) }}" method="POST">
+                        @csrf
+                        <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
+                    bg-oogvereniging-red px-5 py-3 mt-1 rounded-lg border border-oogvereniging-black
+                    shadow">Direct aanmelden</button>
+                    </form>
+                @endif
             @endif
         </div>
         <div class="max-w-6xl mx-auto my-6">
