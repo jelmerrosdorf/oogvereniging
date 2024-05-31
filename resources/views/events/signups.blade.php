@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="max-w-6xl mx-auto mt-8 mb-6">
+        <div class="max-w-6xl mx-auto mt-8 mb-12">
             <h1 class="font-bold text-5xl text-oogvereniging-blue">
                 Aanmeldingen voor {{ $event->title }}
             </h1>
@@ -13,15 +13,15 @@
             <table>
                 <thead>
                 <tr>
-                    <th>Naam</th>
-                    <th>Emailadres</th>
+                    <th class="p-4 pl-0 pr-16 text-xl text-left">Naam</th>
+                    <th class="p-4 pl-0 text-xl text-left">Emailadres</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-lg">
                 @foreach($users as $user)
                     <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
+                        <td class="p-4 pl-0 text-lg max-w-sm">{{ $user->name }}</td>
+                        <td class="p-4 pl-0 text-lg max-w-sm">{{ $user->email }}</td>
                     </tr>
                 @endforeach
                 </tbody>

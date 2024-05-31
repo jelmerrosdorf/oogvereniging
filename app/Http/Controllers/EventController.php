@@ -69,7 +69,7 @@ class EventController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $eventData = $request->all();
-        $eventData['user_id'] = Auth::user()->id; // Add currently logged in users' ID to event data
+        $eventData['user_id'] = Auth::user()->id;
 
         Event::create($eventData);
 
