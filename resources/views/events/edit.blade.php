@@ -92,18 +92,9 @@
                         tracking-wide min-w-150">Provincie</label>
                         <select id="tag_province" class="w-2/5 border-2 rounded-lg
                         border-oogvereniging-blue tracking-wide focus:border-oogvereniging-blue-alt" name="tag_province">
-                            <option @if($event->tag_province == 'Landelijk')
-                            selected="selected" @endif
-                            value="Landelijk">Landelijk</option>
-                            <option @if($event->tag_province == 'Zuid-Holland')
-                            selected="selected" @endif
-                            value="Zuid-Holland">Zuid-Holland</option>
-                            <option @if($event->tag_province == 'Noord-Holland')
-                            selected="selected" @endif
-                            value="Noord-Holland">Noord-Holland</option>
-                            <option @if($event->tag_province == 'Noord-Brabant')
-                            selected="selected" @endif
-                            value="Noord-Brabant">Noord-Brabant</option>
+                            @foreach($provinces as $province)
+                                <option value="{{ $province }}">{{ $province }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="flex gap-4 items-baseline">
@@ -111,14 +102,9 @@
                         tracking-wide min-w-150">Onderwerp</label>
                         <select id="tag_subject" class="w-2/5 border-2 rounded-lg
                         border-oogvereniging-blue tracking-wide focus:border-oogvereniging-blue-alt" name="tag_subject">
-                            <option @if($event->tag_subject == 'Digiwijs') selected="selected"
-                            @endif value="Digiwijs">Digiwijs</option>
-                            <option @if($event->tag_subject == 'Glaucoom') selected="selected"
-                            @endif value="Glaucoom">Glaucoom</option>
-                            <option @if($event->tag_subject == 'Oor & oog') selected="selected"
-                            @endif value="Oor & oog">Oor & oog</option>
-                            <option @if($event->tag_subject == 'Sportief') selected="selected"
-                            @endif value="Sportief">Sportief</option>
+                            @foreach($subjects as $subject)
+                                <option value="{{ $subject }}">{{ $subject }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div>

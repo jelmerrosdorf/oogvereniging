@@ -18,7 +18,7 @@
             @endif
 
             <p class="text-lg text-oogvereniging-blue tracking-wide">
-                Van oogcafés tot webinars: in deze agenda vind je al onze activiteiten. Zoek op provincie of op onderwerp en meld je aan!
+                In deze agenda vind je al onze activiteiten. Zoek op provincie of op onderwerp en meld je aan!
             </p>
 
             <form action="{{ route('events.create') }}" method="get">

@@ -40,7 +40,7 @@ class EventController extends Controller
         $provinces = Event::select('tag_province')->distinct()->pluck('tag_province');
         $subjects = Event::select('tag_subject')->distinct()->pluck('tag_subject');
 
-        return view('events.index',compact('events', 'provinces', 'subjects'))
+        return view('events.index', compact('events', 'provinces', 'subjects'))
             ->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
@@ -60,7 +60,10 @@ class EventController extends Controller
      */
     public function create(): View
     {
-        return view('events.create');
+        $provinces = Event::select('tag_province')->distinct()->pluck('tag_province');
+        $subjects = Event::select('tag_subject')->distinct()->pluck('tag_subject');
+
+        return view('events.create', compact('provinces', 'subjects'));
     }
 
     /**
@@ -97,7 +100,10 @@ class EventController extends Controller
      */
     public function edit(Event $event): View
     {
-        return view('events.edit',compact('event'));
+        $provinces = Event::select('tag_province')->distinct()->pluck('tag_province');
+        $subjects = Event::select('tag_subject')->distinct()->pluck('tag_subject');
+
+        return view('events.edit',compact('event', 'provinces', 'subjects'));
     }
 
     /**
