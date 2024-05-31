@@ -8,10 +8,15 @@
                     <path d="M31.5001 11.1265H6.45013" stroke="#B11031" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 <div class="mb-7 -mt-1">
-                    <a href="{{ route('events.index') }}" class="text-lg tracking-wide
-                text-oogvereniging-blue underline underline-offset-4
-                hover:text-oogvereniging-red focus:text-oogvereniging-red">Terug naar alle
-                        activiteiten</a>
+                    @if ($event->public == 1)
+                        <a href="{{ route('events.index') }}" class="text-lg tracking-wide
+                        text-oogvereniging-blue underline underline-offset-4
+                        hover:text-oogvereniging-red focus:text-oogvereniging-red">Terug naar alle activiteiten</a>
+                    @elseif ($event->public == 0)
+                        <a href="{{ route('events.concepts') }}" class="text-lg tracking-wide
+                        text-oogvereniging-blue underline underline-offset-4
+                        hover:text-oogvereniging-red focus:text-oogvereniging-red">Terug naar alle concepten</a>
+                    @endif
                 </div>
             </div>
 
