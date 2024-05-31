@@ -162,14 +162,20 @@ class EventController extends Controller
 
     public function exportevents()
     {
-        return Excel::download(new EventsExport, 'events.xlsx');
+        return Excel::download(new EventsExport, 'activiteiten.xlsx');
     }
 
     public function exportsignups()
     {
         $event_id = request()->segment(2);
 
-        return Excel::download(new EventUsersExport($event_id), 'event_users.xlsx');
+        $event = Event::find($event_id);
+        $event_title = $event->title;
+
+        $event_title_sanitized = preg_replace('/[^A-Za-z0-9\-]/', '', $event_title);
+        $fileName = 'inschrijvingen_' . $event_title_sanitized . '.xlsx';
+
+        return Excel::download(new EventUsersExport($event_id), $fileName);
     }
 
     public function registrations(Event $event)
