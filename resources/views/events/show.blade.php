@@ -76,9 +76,8 @@
         </div>
         <div class="max-w-6xl mx-auto my-6">
             <p class="text-lg text-oogvereniging-blue">Aanmelden niet-leden</p>
-            <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1">Meld je
-                aan via het aanmeldformulier. Mocht het invullen van het formulier niet lukken,
-                dan kun je je ook telefonisch aanmelden via de Ooglijn: 060 382 73 38.</p>
+            <p class="text-xl font-semibold text-oogvereniging-blue tracking-wide mt-1">Neem contact op met:
+                06-12345678</p>
         </div>
         <div class="max-w-6xl mx-auto mt-12 pb-6">
             <form action="{{ route('events.edit', $event->id) }}">
@@ -90,7 +89,7 @@
         <div class="max-w-6xl mx-auto mt-12 pb-6">
             <form action="{{ route('event.signups', $event->id) }}">
                 <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
-                bg-oogvereniging-red px-5 py-3 mt-1 rounded-lg border border-oogvereniging-black
+                bg-oogvereniging-red px-5 py-3 mt-1 mb-16 rounded-lg border border-oogvereniging-black
                 shadow">Inschrijvingen bekijken</button>
             </form>
         </div>

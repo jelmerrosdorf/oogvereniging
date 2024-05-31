@@ -101,7 +101,7 @@
 
             <form action="{{ route('events.export') }}" method="get">
                 <button class="text-xl font-semibold tracking-wide text-oogvereniging-white
-                bg-oogvereniging-red px-5 py-3 mb-8 rounded-lg border border-oogvereniging-black
+                bg-oogvereniging-red px-5 py-3 mb-16 rounded-lg border border-oogvereniging-black
                 shadow">Exporteer activiteiten</button>
             </form>
         </div>

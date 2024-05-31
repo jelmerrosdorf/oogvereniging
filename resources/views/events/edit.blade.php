@@ -123,7 +123,7 @@
                     </div>
                     <div>
                         <button type="submit" class="text-xl font-semibold tracking-wide
-                        text-oogvereniging-white bg-oogvereniging-red px-5 py-3 my-8
+                        text-oogvereniging-white bg-oogvereniging-red px-5 py-3 my-8 mb-16
                         rounded-lg border border-oogvereniging-black
                         shadow">Wijzigingen opslaan</button>
                     </div>
