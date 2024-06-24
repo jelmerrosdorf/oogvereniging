@@ -73,9 +73,10 @@
                         <div onclick="location.href='{{ route('events.show',$event->id) }}';"
                              class="border-2 border-oogvereniging-blue rounded bg-oogvereniging-white
                               text-oogvereniging-blue font-semibold p-5 shadow-xl w-4,5/10 flex
-                              flex-col justify-between gap-8 focus:border-oogvereniging-red
+                              flex-col justify-between gap-8 focus:outline-none focus:border-oogvereniging-red
                               hover:border-oogvereniging-red focus:cursor-pointer
-                              hover:cursor-pointer mb-12">
+                              hover:cursor-pointer mb-12" tabindex="0" role="button"
+                              onkeydown="if(event.key === 'Enter' || event.key === ' ') { this.click(); event.preventDefault(); }">
                             <h3 class="text-2xl mb-4 underline underline-offset-4">
                             {{ $event->title }}</h3>
                             <div class="flex justify-between items-baseline">

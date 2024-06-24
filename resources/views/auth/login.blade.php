@@ -7,14 +7,14 @@
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" :value="__('Email')" >Emailadres</x-input-label>
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" :value="__('Wachtwoord')" >Wachtwoord</x-input-label>
 
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
@@ -29,7 +29,7 @@
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="scale-125 ml-1 rounded border-oogvereniging-blue
                 text-oogvereniging-blue shadow focus:border-oogvereniging-blue-alt" name="remember">
-                <span class="ml-2 text-lg text-oogvereniging-blue">{{ __('Remember me') }}</span>
+                <span class="ml-2 text-lg text-oogvereniging-blue">{{ __('Onthoud mij') }}</span>
             </label>
         </div>
 
