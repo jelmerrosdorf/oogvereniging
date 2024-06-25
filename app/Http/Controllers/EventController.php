@@ -19,6 +19,8 @@ class EventController extends Controller
      */
     public function index(Request $request): View
     {
+
+
         $query = Event::query();
 
         if ($request->has('province') && $request->province && $request->province != 'Alles') {
