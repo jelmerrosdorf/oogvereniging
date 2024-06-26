@@ -111,7 +111,7 @@
 {{--                                <option value="{{ $subject }}">{{ $subject }}</option>--}}
 {{--                            @endforeach--}}
                             <option>Educatief</option>
-                            <option>Landelijk</option>
+                            <option>Evenement</option>
                             <option>Bestuur</option>
                             <option>Digitaal</option>
                         </select>
