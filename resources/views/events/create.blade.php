@@ -93,9 +93,13 @@
                         tracking-wide min-w-150">Provincie</label>
                         <select id="tag_province" class="w-2/5 border-2 rounded-lg
                         border-oogvereniging-blue tracking-wide focus:border-oogvereniging-blue-alt" name="tag_province">
-                            @foreach($provinces as $province)
-                                <option value="{{ $province }}">{{ $province }}</option>
-                            @endforeach
+{{--                            @foreach($provinces as $province)--}}
+{{--                                <option value="{{ $province }}">{{ $province }}</option>--}}
+{{--                            @endforeach--}}
+                            <option>Landelijk</option>
+                            <option>Noord-Holland</option>
+                            <option>Zuid-Holland</option>
+                            <option>Noord-Brabant</option>
                         </select>
                     </div>
                     <div class="flex gap-4 items-baseline">
@@ -103,9 +107,13 @@
                         tracking-wide min-w-150">Onderwerp</label>
                         <select id="tag_subject" class="w-2/5 border-2 rounded-lg
                         border-oogvereniging-blue tracking-wide focus:border-oogvereniging-blue-alt" name="tag_subject">
-                            @foreach($subjects as $subject)
-                                <option value="{{ $subject }}">{{ $subject }}</option>
-                            @endforeach
+{{--                            @foreach($subjects as $subject)--}}
+{{--                                <option value="{{ $subject }}">{{ $subject }}</option>--}}
+{{--                            @endforeach--}}
+                            <option>Educatief</option>
+                            <option>Landelijk</option>
+                            <option>Bestuur</option>
+                            <option>Digitaal</option>
                         </select>
                     </div>
                     <div>
